@@ -32,7 +32,7 @@ const getData = async () => {
         <p class="card-text">
           ${prodotto.price}$
         </p>
-        <button class="btn btn-secondary" id="btnElimina">Elimina</button>
+        <button class="btn btn-secondary" id="btnElimina">Nascondi</button>
         <div class="btn btn-white" id="btnModifica"><a href="./dettaglio.html?prodottoId=${prodotto._id}">Dettagli </a> </div>
         <button class="btn btn-primary" id="btnScopri">Scopri di più</button>
       </div>

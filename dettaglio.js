@@ -10,7 +10,7 @@ window.onload = async () => {
   });
   const prodottoSelezionato = await resp.json();
   console.log(prodottoSelezionato);
-  const { name, description, brand, imageUrl, price } = prodottoSelezionato;
+  const { name, description, brand, imageUrl, price, _id } = prodottoSelezionato;
   const container = document.getElementById("containerProdotto");
   container.innerHTML = `<div class="row justify-content-center">
   <div class="card">
@@ -31,20 +31,30 @@ window.onload = async () => {
         <button class="btn btn-primary" id="btnScopri">Scopri di più</button>
       </div>
       </div>
-  <div id="prodotto-dettaglio"></div>
-  <button class="btn-primary">modifica</button>;
-  </div>`;
+      <div id="prodotto-dettaglio"></div>
+      <button id="btnModifica" class="btn-dark"><a href="./backoffice.html?prodottoId=${_id}">Modifica </a></button>;
+      </div>`;
   const btnElimina = document.querySelector("#btnElimina");
   console.log(btnElimina);
-  const Elimina = function () {
-    fetch(url + prodottoId, {
-      method: "DELETE",
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4NzAzMzY4NWVjNDAwMTQ1MGI5M2QiLCJpYXQiOjE2OTI5NTQ2NzUsImV4cCI6MTY5NDE2NDI3NX0.63VJ58idUSSf-AK1f2lYIyx9mnx8SToyKqHXGKU96MI",
-      },
-    });
-    console.log("Eliminato!");
-  };
-  btnElimina.onclick = Elimina();
+  btnElimina.onclick = Elimina;
 };
+const Elimina = function () {
+  fetch(url + prodottoId, {
+    method: "DELETE",
+    headers: {
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4NzAzMzY4NWVjNDAwMTQ1MGI5M2QiLCJpYXQiOjE2OTI5NTQ2NzUsImV4cCI6MTY5NDE2NDI3NX0.63VJ58idUSSf-AK1f2lYIyx9mnx8SToyKqHXGKU96MI",
+    },
+  });
+  console.log("Eliminato!");
+};
+
+// const Modifica = function () {
+//   fetch(url + prodottoId, {
+//     method: "PUT",
+//     headers: {
+//       Authorization:
+//         "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4NzAzMzY4NWVjNDAwMTQ1MGI5M2QiLCJpYXQiOjE2OTI5NTQ2NzUsImV4cCI6MTY5NDE2NDI3NX0.63VJ58idUSSf-AK1f2lYIyx9mnx8SToyKqHXGKU96MI",
+//     },
+//   });
+// };
