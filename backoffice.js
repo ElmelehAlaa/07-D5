@@ -82,6 +82,8 @@ if (prodottoId) {
        </div> </form>`;
 
       divForm.appendChild(divRow);
+      const btnCrea = document.getElementById("crea");
+      btnCrea.classList.add("d-none");
       const ModificaProdotto = function (event) {
         event.preventDefault();
         console.log("modifica");
@@ -173,7 +175,11 @@ if (prodottoId) {
          <button id= "crea" type="submit" class="btn btn-primary" >Crea Nuovo Prodotto</button>
          <button id= "modifica" type="submit" class="btn btn-primary" >Modifica Prodotto</button>
        </div> </form>`;
+
   divForm.appendChild(divRow);
+  const btnModifica = document.getElementById("modifica");
+  console.log(btnModifica);
+  btnModifica.classList.add("d-none");
   const creaProdotto = function (event) {
     event.preventDefault();
     console.log("Creato!");

@@ -32,11 +32,13 @@ window.onload = async () => {
       </div>
       </div>
       <div id="prodotto-dettaglio"></div>
-      <button id="btnModifica" class="btn-dark"><a href="./backoffice.html?prodottoId=${_id}">Modifica </a></button>;
+      <div id="btnModifica" class="btn bg-dark text-light"><a href="./backoffice.html?prodottoId=${_id}">Modifica </a></div>;
       </div>`;
   const btnElimina = document.querySelector("#btnElimina");
   console.log(btnElimina);
   btnElimina.onclick = Elimina;
+  const btnScopri = document.getElementById("btnScopri");
+  btnScopri.classList.add("d-none");
 };
 const Elimina = function () {
   fetch(url + prodottoId, {
