@@ -5,7 +5,7 @@ window.onload = async () => {
     method: "GET",
     headers: {
       Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4NzAzMzY4NWVjNDAwMTQ1MGI5M2QiLCJpYXQiOjE2OTI5NTQ2NzUsImV4cCI6MTY5NDE2NDI3NX0.63VJ58idUSSf-AK1f2lYIyx9mnx8SToyKqHXGKU96MI",
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4NjE1NGMwMzRmZjAwMTQwM2Y1MzMiLCJpYXQiOjE2OTQ4NjczMzgsImV4cCI6MTY5NjA3NjkzOH0.hTLKACOvUzS1q8dZXmkwdm7Z62vONoitbxAbjBu4UrY",
     },
   });
   const prodottoSelezionato = await resp.json();
@@ -41,22 +41,17 @@ window.onload = async () => {
   btnScopri.classList.add("d-none");
 };
 const Elimina = function () {
-  fetch(url + prodottoId, {
-    method: "DELETE",
-    headers: {
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4NzAzMzY4NWVjNDAwMTQ1MGI5M2QiLCJpYXQiOjE2OTI5NTQ2NzUsImV4cCI6MTY5NDE2NDI3NX0.63VJ58idUSSf-AK1f2lYIyx9mnx8SToyKqHXGKU96MI",
-    },
-  });
-  console.log("Eliminato!");
+  if (confirm("Sei sicuro di eliminare questo prodotto?")) {
+    fetch(url + prodottoId, {
+      method: "DELETE",
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4NjE1NGMwMzRmZjAwMTQwM2Y1MzMiLCJpYXQiOjE2OTQ4NjczMzgsImV4cCI6MTY5NjA3NjkzOH0.hTLKACOvUzS1q8dZXmkwdm7Z62vONoitbxAbjBu4UrY",
+      },
+    });
+    console.log("Eliminato!");
+  } else {
+    // Do nothing!
+    console.log("Operazione Annullata");
+  }
 };
-
-// const Modifica = function () {
-//   fetch(url + prodottoId, {
-//     method: "PUT",
-//     headers: {
-//       Authorization:
-//         "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4NzAzMzY4NWVjNDAwMTQ1MGI5M2QiLCJpYXQiOjE2OTI5NTQ2NzUsImV4cCI6MTY5NDE2NDI3NX0.63VJ58idUSSf-AK1f2lYIyx9mnx8SToyKqHXGKU96MI",
-//     },
-//   });
-// };

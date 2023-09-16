@@ -6,7 +6,7 @@ if (prodottoId) {
     method: "GET",
     headers: {
       Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4NzAzMzY4NWVjNDAwMTQ1MGI5M2QiLCJpYXQiOjE2OTI5NTQ2NzUsImV4cCI6MTY5NDE2NDI3NX0.63VJ58idUSSf-AK1f2lYIyx9mnx8SToyKqHXGKU96MI",
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4NjE1NGMwMzRmZjAwMTQwM2Y1MzMiLCJpYXQiOjE2OTQ4NjczMzgsImV4cCI6MTY5NjA3NjkzOH0.hTLKACOvUzS1q8dZXmkwdm7Z62vONoitbxAbjBu4UrY",
     },
   })
     .then((resp) => {
@@ -78,35 +78,40 @@ if (prodottoId) {
        </div>
        <div class="col-12">
          <button id= "crea" type="submit" class="btn btn-primary" >Crea Nuovo Prodotto</button>
-         <button id= "modifica" type="submit" class="btn btn-primary" >Modifica Prodotto</button>
+         <button id= "modifica" type="submit"  class="btn btn-primary" >Modifica Prodotto</button>
        </div> </form>`;
 
       divForm.appendChild(divRow);
       const btnCrea = document.getElementById("crea");
       btnCrea.classList.add("d-none");
-      const ModificaProdotto = function (event) {
-        event.preventDefault();
-        console.log("modifica");
-        const inputName = document.getElementById("validationCustom01");
-        const inputDescription = document.getElementById("validationCustom02");
-        const inputBrand = document.getElementById("validationCustomBrand");
-        const inputImageUrl = document.getElementById("validationCustom03");
-        const inputPrice = document.getElementById("validationCustom04");
-        fetch(url + prodottoId, {
-          method: "PUT",
-          body: JSON.stringify({
-            name: inputName.value,
-            description: inputDescription.value,
-            brand: inputBrand.value,
-            imageUrl: inputImageUrl.value,
-            price: inputPrice.value,
-          }),
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4NzAzMzY4NWVjNDAwMTQ1MGI5M2QiLCJpYXQiOjE2OTI5NTQ2NzUsImV4cCI6MTY5NDE2NDI3NX0.63VJ58idUSSf-AK1f2lYIyx9mnx8SToyKqHXGKU96MI",
-            "Content-Type": "application/json",
-          },
-        });
+      const ModificaProdotto = function (e) {
+        e.preventDefault();
+        if (confirm("Sei sicuro di voler modificare il prodotto?")) {
+          const inputName = document.getElementById("validationCustom01");
+          const inputDescription = document.getElementById("validationCustom02");
+          const inputBrand = document.getElementById("validationCustomBrand");
+          const inputImageUrl = document.getElementById("validationCustom03");
+          const inputPrice = document.getElementById("validationCustom04");
+
+          fetch(url + prodottoId, {
+            method: "PUT",
+            body: JSON.stringify({
+              name: inputName.value,
+              description: inputDescription.value,
+              brand: inputBrand.value,
+              imageUrl: inputImageUrl.value,
+              price: inputPrice.value,
+            }),
+            headers: {
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4NjE1NGMwMzRmZjAwMTQwM2Y1MzMiLCJpYXQiOjE2OTQ4NjczMzgsImV4cCI6MTY5NjA3NjkzOH0.hTLKACOvUzS1q8dZXmkwdm7Z62vONoitbxAbjBu4UrY",
+              "Content-Type": "application/json",
+            },
+          });
+          console.log("modificato con successo!");
+        } else {
+          console.log("operazione annullata");
+        }
       };
       form.addEventListener("submit", ModificaProdotto);
     });
@@ -178,31 +183,36 @@ if (prodottoId) {
 
   divForm.appendChild(divRow);
   const btnModifica = document.getElementById("modifica");
-  console.log(btnModifica);
+
   btnModifica.classList.add("d-none");
   const creaProdotto = function (event) {
     event.preventDefault();
-    console.log("Creato!");
-    const inputName = document.getElementById("validationCustom01");
-    const inputDescription = document.getElementById("validationCustom02");
-    const inputBrand = document.getElementById("validationCustomBrand");
-    const inputImageUrl = document.getElementById("validationCustom03");
-    const inputPrice = document.getElementById("validationCustom04");
-    fetch(url, {
-      method: "POST",
-      body: JSON.stringify({
-        name: inputName.value,
-        description: inputDescription.value,
-        brand: inputBrand.value,
-        imageUrl: inputImageUrl.value,
-        price: inputPrice.value,
-      }),
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4NzAzMzY4NWVjNDAwMTQ1MGI5M2QiLCJpYXQiOjE2OTI5NTQ2NzUsImV4cCI6MTY5NDE2NDI3NX0.63VJ58idUSSf-AK1f2lYIyx9mnx8SToyKqHXGKU96MI",
-        "Content-Type": "application/json",
-      },
-    });
+    if (confirm("Are you sure you want to save this thing into the database?")) {
+      console.log("Creato!");
+      const inputName = document.getElementById("validationCustom01");
+      const inputDescription = document.getElementById("validationCustom02");
+      const inputBrand = document.getElementById("validationCustomBrand");
+      const inputImageUrl = document.getElementById("validationCustom03");
+      const inputPrice = document.getElementById("validationCustom04");
+      fetch(url, {
+        method: "POST",
+        body: JSON.stringify({
+          name: inputName.value,
+          description: inputDescription.value,
+          brand: inputBrand.value,
+          imageUrl: inputImageUrl.value,
+          price: inputPrice.value,
+        }),
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4NjE1NGMwMzRmZjAwMTQwM2Y1MzMiLCJpYXQiOjE2OTQ4NjczMzgsImV4cCI6MTY5NjA3NjkzOH0.hTLKACOvUzS1q8dZXmkwdm7Z62vONoitbxAbjBu4UrY",
+          "Content-Type": "application/json",
+        },
+      });
+    } else {
+      // Do nothing!
+      console.log("Thing was not saved to the database.");
+    }
   };
   form.addEventListener("submit", creaProdotto);
 }

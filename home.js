@@ -4,7 +4,7 @@ const getData = async () => {
     method: "GET",
     headers: {
       Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4NzAzMzY4NWVjNDAwMTQ1MGI5M2QiLCJpYXQiOjE2OTI5NTQ2NzUsImV4cCI6MTY5NDE2NDI3NX0.63VJ58idUSSf-AK1f2lYIyx9mnx8SToyKqHXGKU96MI",
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4NjE1NGMwMzRmZjAwMTQwM2Y1MzMiLCJpYXQiOjE2OTQ4NjczMzgsImV4cCI6MTY5NjA3NjkzOH0.hTLKACOvUzS1q8dZXmkwdm7Z62vONoitbxAbjBu4UrY",
     },
   })
     .then((responseGetFetch) => {
@@ -23,7 +23,7 @@ const getData = async () => {
         console.log(col);
         row.appendChild(col);
         col.innerHTML = ` <div class="card">
-      <img src="${prodotto.imageUrl}" class="card-img-top" alt="..." />
+      <img id="img-card" src="${prodotto.imageUrl}" class="card-img-top" alt="..." />
       <div class="card-body">
         <h5 class="card-title">${prodotto.name}</h5>
         <p class="card-text">
@@ -39,7 +39,7 @@ const getData = async () => {
         const buttonsElimina = document.querySelectorAll("#btnElimina");
         buttonsElimina.forEach((btnElimina) =>
           btnElimina.addEventListener("click", function (e) {
-            e.currentTarget.closest(".card").style.display = "none";
+            e.currentTarget.closest(".col-12").remove();
           })
         );
       });
