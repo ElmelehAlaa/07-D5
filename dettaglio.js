@@ -49,6 +49,7 @@ const Elimina = function () {
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4NjE1NGMwMzRmZjAwMTQwM2Y1MzMiLCJpYXQiOjE2OTQ4NjczMzgsImV4cCI6MTY5NjA3NjkzOH0.hTLKACOvUzS1q8dZXmkwdm7Z62vONoitbxAbjBu4UrY",
       },
     });
+    alert("Prodotto Eliminato con successo");
     console.log("Eliminato!");
   } else {
     // Do nothing!

@@ -108,6 +108,7 @@ if (prodottoId) {
               "Content-Type": "application/json",
             },
           });
+          alert("Prodotto modificato con successo");
           console.log("modificato con successo!");
         } else {
           console.log("operazione annullata");
@@ -209,6 +210,7 @@ if (prodottoId) {
           "Content-Type": "application/json",
         },
       });
+      alert("Prodotto creato con successo");
     } else {
       // Do nothing!
       console.log("Thing was not saved to the database.");
